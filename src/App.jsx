@@ -1,7 +1,7 @@
-import { MainLayout } from './components/layouts/main-layout/MainLayout';
+import { ServiceList } from './pages/services/ServiceList/ServiceList';
 
 function App() {
-    return <MainLayout />;
+    return <ServiceList />;
 }
 
 export default App;
