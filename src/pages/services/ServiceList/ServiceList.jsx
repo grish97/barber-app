@@ -1,44 +1,51 @@
 import { useState, useEffect } from "react";
 import { fakeServices, serviceCatgories } from './data';
+import { barberServies } from "../../../statics/barber-serices";
+import { ServiceCard } from "../ServiceCard/ServiceCard";
+
+import './ServiceList.css';
+import { ServiceFilter } from "../ServiceFilter";
 
 export const ServiceList = () => {
-    const [services, setService] = useState([]);
+    const [services, setService] = useState(barberServies);
 
     const [filter, setFilter] = useState('all');
 
-    useEffect(() => {
+    const handleFilterChange = (filter) => {
         if (filter === 'all') {
-            setService(fakeServices);
+            setService(barberServies);
             return;
         }
 
-        const filteredData = fakeServices.filter((service) => {
-            return service.category === filter
-        })
+        const filteredServices = barberServies.filter(
+            service => service.category === filter
+        );
 
-        setService(filteredData);
-    }, [filter]);
+        setService(filteredServices);
+    };
+
+    // useEffect(() => {
+    //     if (filter === 'all') {
+    //         setService(fakeServices);
+    //         return;
+    //     }
+
+    //     const filteredData = fakeServices.filter((service) => {
+    //         return service.category === filter
+    //     })
+
+    //     setService(filteredData);
+    // }, [filter]);
 
 
     return (
-        <div>
-            <select
-                name="categories"
-                id="categories"
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-            >
-                <option value="all">All</option>
+        <div className="services">
+            <ServiceFilter handleFilterChange={handleFilterChange} />
 
-                {serviceCatgories.map((category, index) => (
-                    <option value={category} key={index}>{category}</option>
-                ))}
-            </select>
-
-            <div>
-                {services.map((service) => (
-                    <p>{JSON.stringify(service.services)}</p>
-                ))}
+            <div className="service-list">
+                {services.map((service, index) => 
+                    <ServiceCard key={index} service={service} />
+                )}
             </div>
         </div>
     );
