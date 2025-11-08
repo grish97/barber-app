@@ -1,0 +1,11 @@
+.barber-list {
+    display: flex;
+    margin: 10px 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.view-more {
+    cursor: pointer;
+}
