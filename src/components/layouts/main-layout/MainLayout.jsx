@@ -1,13 +1,22 @@
 import './MainLayout.css';
-import { routing } from '../../../routing/routing';
 import { useState } from 'react';
 
-// pages
-import { BarberList } from '../../../pages/barbers/BarberList';
-import { ServiceList } from '../../../pages/services/ServiceList/ServiceList';
+import { Outlet, useNavigate } from 'react-router';
+
+export const routing = [
+    {
+        path: '/services',
+        name: 'Services'
+    },
+    {
+        path: '/barbers',
+        name: 'Barbers'
+    }
+];
 
 export const MainLayout = () => {
     const [currentPage, setCurrentPage] = useState('/');
+    const navigate = useNavigate();
 
     return (
         <section id='main-layout'>
@@ -21,7 +30,7 @@ export const MainLayout = () => {
                         {routing.map((route, index) => (
                             <li
                                 onClick={
-                                    () => setCurrentPage(route.path)
+                                    () => navigate(route.path)
                                 }
                                 className={currentPage === route.path ? 'active' : ''}
                             >
@@ -33,7 +42,7 @@ export const MainLayout = () => {
             </div>
 
             <div id='content'>
-                {['/', '/services'].includes(currentPage) ? <ServiceList /> : <BarberList />}
+                <Outlet />
             </div>
         </section>
     );

@@ -14,6 +14,8 @@ export const BarberDetails = (props) => {
     }, [props.barberId]);
 
     return (
-        <div className="barber-details"></div>
+        <div className="barber-details">
+            <div>{barberDetail.name}</div>
+        </div>
     );
 };

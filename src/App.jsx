@@ -1,9 +1,7 @@
-import { MainLayout } from './components/layouts/main-layout/MainLayout'; 
+import { AppRouter } from './routing/AppRouter';
 
 function App() {
-    return (
-        <MainLayout />
-    );
+    return <AppRouter />
 }
 
 export default App;
