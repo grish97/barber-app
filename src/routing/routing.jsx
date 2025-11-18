@@ -1,28 +1,14 @@
 import { createBrowserRouter } from 'react-router';
 
 // Layout component
-import { MainLayout } from '../components/layouts/main-layout/MainLayout';
+import { MainLayout } from '../layouts/main-layout/MainLayout';
+import { PublicLayout } from '../layouts/public/PublicLayout';
 
 // pages
 import { ServiceList } from '../pages/services/ServiceList/ServiceList';
 import { BarberList } from '../pages/barbers/BarberList';
 import { Home } from '../pages/home/Home';
-
-// Simple routing
-// export const appRouter = createBrowserRouter([
-//     {
-//         path: '/',
-//         element: <Home />,
-//     },
-    // {
-    //     path: '/services',
-    //     element: <ServiceList />,
-    // },
-    // {
-    //     path: '/barbers',
-    //     element: <BarberList />
-    // }
-// ]);
+import { SignIn } from '../pages/auth/SignIn';
 
 // Layout Routes
 export const appRouter = createBrowserRouter([
@@ -41,6 +27,20 @@ export const appRouter = createBrowserRouter([
             {
                 path: '/barbers',
                 Component: BarberList
+            }
+        ],
+    },
+    {
+        path: '/auth',
+        Component: PublicLayout,
+        children: [
+            {
+                path: 'signin',
+                Component: SignIn
+            },
+            {
+                path: 'signup',
+                Component: null
             }
         ],
     }
