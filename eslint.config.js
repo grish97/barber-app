@@ -8,6 +8,7 @@ export default [
   { ignores: ['dist'] },
   {
     files: ['**/*.{js,jsx}'],
+    extends: ["eslint:recommended", "plugin:prettier/recommended"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,

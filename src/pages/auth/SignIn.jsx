@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useSignIn } from '../../hooks/useSignIn';
 import './SignIn.css';
 
 
 export const SignIn = () => {
-    const [username, setUserName] = useState('');
-    const [password, setPassword] = useState('');
+    const { username, password, setPassword, setUserName, handleSignIn } = useSignIn();
 
     return (
         <div className="signin">
@@ -28,7 +27,7 @@ export const SignIn = () => {
                 />
             </div>
 
-            <button>Sign In</button>
+            <button onClick={handleSignIn}>Sign In</button>
         </div>
     )
 };

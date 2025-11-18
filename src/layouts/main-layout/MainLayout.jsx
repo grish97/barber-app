@@ -29,6 +29,7 @@ export const MainLayout = () => {
                     <ul>
                         {routing.map((route, index) => (
                             <li
+                                key={index}
                                 onClick={
                                     () => navigate(route.path)
                                 }
