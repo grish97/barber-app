@@ -1,7 +1,8 @@
 import './MainLayout.css';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { Outlet, useNavigate } from 'react-router';
+import { AuthContext } from '../../context/AuthContext';
 
 export const routing = [
     {
@@ -15,8 +16,20 @@ export const routing = [
 ];
 
 export const MainLayout = () => {
+    const { setAuth } = useContext(AuthContext);
+
     const [currentPage, setCurrentPage] = useState('/');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setTimeout(() => {
+            setAuth({
+                firstName: 'John',
+                lastName: 'Doe',
+                accessToken: 'asdasdasodhajksd8687689689687asdasd'
+            });
+        }, 2000);
+    }, [])
 
     return (
         <section id='main-layout'>
