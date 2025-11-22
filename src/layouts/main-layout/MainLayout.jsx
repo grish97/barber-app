@@ -16,20 +16,10 @@ export const routing = [
 ];
 
 export const MainLayout = () => {
-    const { setAuth } = useContext(AuthContext);
+    const { username } = useContext(AuthContext);
 
     const [currentPage, setCurrentPage] = useState('/');
     const navigate = useNavigate();
-
-    useEffect(() => {
-        setTimeout(() => {
-            setAuth({
-                firstName: 'John',
-                lastName: 'Doe',
-                accessToken: 'asdasdasodhajksd8687689689687asdasd'
-            });
-        }, 2000);
-    }, [])
 
     return (
         <section id='main-layout'>
@@ -51,6 +41,8 @@ export const MainLayout = () => {
                                 {route.name}
                             </li>
                         ))}
+
+                        <li>{username}</li>
                     </ul>
                 </nav>
             </div>

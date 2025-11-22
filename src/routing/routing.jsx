@@ -9,6 +9,7 @@ import { ServiceList } from '../pages/services/ServiceList/ServiceList';
 import { BarberList } from '../pages/barbers/BarberList';
 import { Home } from '../pages/home/Home';
 import { SignIn } from '../pages/auth/SignIn';
+import { LocalStorageContextProvider } from '../context/LocalStorageContextProvider';
 
 // Layout Routes
 export const appRouter = createBrowserRouter([
@@ -26,7 +27,11 @@ export const appRouter = createBrowserRouter([
             },
             {
                 path: '/barbers',
-                Component: BarberList
+                element: (
+                    <LocalStorageContextProvider>
+                        <BarberList />
+                    </LocalStorageContextProvider>
+                ),
             }
         ],
     },

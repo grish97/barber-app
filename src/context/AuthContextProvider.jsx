@@ -3,6 +3,7 @@ import { AuthContext } from './AuthContext';
 
 export const AuthContextProvider = ({ children }) => {
     const [auth, setAuth] = useState({
+        username: null,
         firstName: null,
         lastName: null,
         accessToken: null,
@@ -10,7 +11,12 @@ export const AuthContextProvider = ({ children }) => {
 
     const authValue = {
         ...auth,
-        setAuth
+        setAuthInformation: (newAuthInformation) => {
+            setAuth({
+                ...auth,
+                ...newAuthInformation
+            });
+        },
     };
 
     return (

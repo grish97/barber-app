@@ -1,9 +1,26 @@
-import { useSignIn } from '../../hooks/useSignIn';
+import { useNavigate } from 'react-router';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import './SignIn.css';
 
 
 export const SignIn = () => {
-    const { username, password, setPassword, setUserName, handleSignIn } = useSignIn();
+    const authContext = useContext(AuthContext);
+
+    const naviagte = useNavigate();
+
+    const [username, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSignIn = () => {
+        setTimeout(2000);
+
+        authContext.setAuthInformation({
+            username: username,
+        });
+
+        naviagte('/')
+    };
 
     return (
         <div className="signin">
