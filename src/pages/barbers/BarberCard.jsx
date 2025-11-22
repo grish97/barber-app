@@ -1,3 +1,5 @@
+import Button from '@mui/material/Button'
+
 
 export const BarberCard = (props) => {
     return (
@@ -10,7 +12,8 @@ export const BarberCard = (props) => {
 
             <div>Rating: {props.barber.rating}</div>
 
-            <small className="view-more" onClick={props.onSelect}>View More</small>
+            {/* <small className="view-more" onClick={props.onSelect}>View More</small> */}
+            <Button variant='primary' className="view-more" onClick={props.onSelect}>View More</Button>
         </div>
     );
 }

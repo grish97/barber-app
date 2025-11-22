@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import './SignIn.css';
 
 
@@ -24,10 +27,15 @@ export const SignIn = () => {
 
     return (
         <div className="signin">
-            <h3>Sign In Your Profile</h3>
+            <h3>
+                Sign In Your Profile
+            </h3>
 
             <div className="field">
-                <input
+                <TextField
+                    sx={{ marginBottom: '10px' }}
+                    fullWidth={true}
+                    size='small'
                     placeholder="Username"
                     type="text"
                     value={username}
@@ -36,7 +44,9 @@ export const SignIn = () => {
             </div>
 
             <div className="field">
-                <input
+                <TextField
+                    fullWidth={true}
+                    size='small'
                     placeholder="Password"
                     type="password"
                     value={password}
@@ -44,7 +54,7 @@ export const SignIn = () => {
                 />
             </div>
 
-            <button onClick={handleSignIn}>Sign In</button>
+            <Button variant='contained' sx={{ marginTop: '10px' }} onClick={handleSignIn}>Sign In</Button>
         </div>
-    )
+    );
 };

@@ -1,13 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 export const Home = () => {
+    const [posts, setPosts] = useState([]);
     const { firstName, lastName, accessToken } = useContext(AuthContext);
 
-    console.log({
-        firstName, lastName, accessToken
-    });
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then((response) => response.json())
+            .then(data => {
+                setPosts(data);
+            })
+    }, []);
+
     return (
-        <div>Home Page</div>
+        <div>
+            {posts.map(post => (
+                <p>{post.body}</p>
+            ))}
+        </div>
     )
 };
